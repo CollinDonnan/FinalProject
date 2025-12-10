@@ -11,7 +11,7 @@ const mongoose = require("mongoose");
 
 // Connect to MongoDB
 mongoose.connect(
-  "mongodb+srv://db_user_1:dIv4stk44rAE1CCs@cluster0.j2fdqzg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+  process.env.uri
 );
 
 const Schema = mongoose.Schema;
@@ -57,3 +57,4 @@ module.exports = mongoose.model("orderinfos", OrderSchema);
 // Order.plugin(passportLocalMongoose);
 
 // module.exports = mongoose.model("orderinfos", Order);
+
