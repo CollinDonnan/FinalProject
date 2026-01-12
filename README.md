@@ -4,14 +4,16 @@ Deals N' Discounts is a full stack e-commerce application. Users can browse prod
 # ⚙️ Installation
 Paste "https://codesandbox.io/p/sandbox/serene-tamas-d6gnqp" in a browser.
 
-If running locally, download the project, and run
+If running locally run
 
 ```bash
-    tar -xf <projectzipfilename>.zip
+    git clone https://github.com/CollinDonnan/Deals-and-Discounts.git
     npm install yarn --global
     yarn install
     node app.js
 ```
+
+For database features to work a .env file with a uri variable containing the uri string must be added
 
 
 # 👥 Contributors
@@ -21,7 +23,7 @@ Responsibilities
 - Home page
 - File linking
 - User authentication
-- Order History
+- Updating database
 - Logn In(ejs)
 
 John Hershey - Full Stack Developer
