@@ -7,9 +7,6 @@
  */
 const passportLocalMongoose = require("passport-local-mongoose");
 const mongoose = require("mongoose");
-mongoose.connect(
-  process.env.uri
-);
 const Schema = mongoose.Schema;
 
 const User = new Schema({

@@ -12,10 +12,9 @@ const bodyParser = require("body-parser"); // Middleware that helps parse data s
 const session = require("express-session"); // Middleware for creating and managing user sessions (stores who’s logged in)
 const passport = require("passport"); // Authentication library – handles login and verifying credentials
 const connectEnsureLogin = require("connect-ensure-login"); // Middleware to protect pages so only logged-in users can access them
-// does not like when order is enabled, says User is not defined w/ Order enable. Otherwise fine
-const Order = require("./model_order.js"); // Import the Order model defined in model_order.js
-const User = require("./model_user.js"); // Import the User model defined in model.js (includes schema + passport-local-mongoose setup)
-const Product = require("./model_product.js"); // import the product
+const Order = require("./models/order.js"); // Import the Order model from models folder
+const User = require("./models/user.js"); // Import the User model from models folder
+const Product = require("./models/product.js"); // Import the Product model from models folder
 const app = express(); // Create an instance of an Express application
 const port = 5000;
 const fs = require("fs");
@@ -38,7 +37,13 @@ app.use(
 );
 
 // ****************** FILE LOADING *******************************
+// Serve static files from root directory and views directory
 app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, 'views')));
+
+// Set up view engine for EJS templates
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 // ********************* MIDDLE WARE  **************************
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -113,7 +118,7 @@ app.post("/login", (req, res, next) => {
 // new
 // once logged in, send to home page
 app.get("/login", (req, res) => {
-  res.sendFile(__dirname + "/index.html");
+  res.sendFile(__dirname + "/views/index.html");
 });
 
 app.get("/user", connectEnsureLogin.ensureLoggedIn(), (req, res) =>

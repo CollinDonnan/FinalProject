@@ -1,10 +1,5 @@
 const mongoose = require("mongoose");
 
-// Connect to MongoDB
-mongoose.connect(
-  process.env.uri
-);
-
 // Define schema matching the JSON structure
 const Product = new mongoose.Schema({
   sys: {

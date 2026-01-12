@@ -9,11 +9,6 @@
 
 const mongoose = require("mongoose");
 
-// Connect to MongoDB
-mongoose.connect(
-  process.env.uri
-);
-
 const Schema = mongoose.Schema;
 
 const OrderSchema = new Schema({
